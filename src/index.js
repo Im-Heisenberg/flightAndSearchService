@@ -1,11 +1,11 @@
 const express = require("express");
 const { PORT } = require("./config/server");
+const bodyParser = require("body-parser");
 const app = express();
+app.use(bodyParser.json({ type: "application/*+json" }));
+const { createCity } = require("./controllers/city-controllers");
 
-
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
+app.get("/:city", createCity);
 
 async function startServer() {
 	app.listen(PORT, () => {
@@ -13,4 +13,4 @@ async function startServer() {
 	});
 }
 
-startServer()
+startServer();

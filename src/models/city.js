@@ -20,9 +20,8 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 		{
-			sequelize,
-			modelName: "City",
-		}
-  );
+    sequelize,
+    modelName: 'City',
+  });
   return City;
 };
