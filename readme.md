@@ -1,5 +1,6 @@
 # Welcome to Flights Service
-
+## Pre requisite
+- you should have MySql setup at your local machine
 ## Project Setup
 - clone the project on your local
 - Execute `npm install` on the same path as of your root directory of teh downloaded project
