@@ -2,8 +2,8 @@ const { CityService } = require("../services");
 
 const cityService = new CityService();
 async function create(req, res) {
-	try {
-		const city = await cityService.createCity(req.query.city);
+    try {
+		const city = await cityService.createCity(req.body);
 		return res.status(201).json({
 			data: city,
 			success: true,
@@ -19,7 +19,7 @@ async function create(req, res) {
 			err: error,
 		});
 	}
-}
+} 
 
 async function destroy(req, res) {
 	try {
@@ -27,7 +27,7 @@ async function destroy(req, res) {
 		return res.status(200).json({
 			data: response,
 			success: true,
-			message: "Successfully fetched a city",
+			message: "Successfully deleted a city",
 			err: {},
 		});
 	} catch (error) {
@@ -35,7 +35,7 @@ async function destroy(req, res) {
 		return res.status(500).json({
 			data: {},
 			success: false,
-			message: "Not able to create a city",
+			message: "Not able to delete a city",
 			err: error,
 		});
 	}
@@ -43,7 +43,7 @@ async function destroy(req, res) {
 
 async function update(req, res) {
 	try {
-		const respones = await cityService.updateCity(req.params.id, req.body);
+		const response = await cityService.updateCity(req.params.id, req.body);
 		return res.status(200).json({
 			data: response,
 			success: true,
@@ -62,7 +62,7 @@ async function update(req, res) {
 }
 const get = async (req, res) => {
 	try {
-		const response = await cityService.getCity(req.params.id);
+		const response = await cityService.getCity(req.params?.id);
 		return res.status(200).json({
 			data: response,
 			success: true,

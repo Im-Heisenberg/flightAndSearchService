@@ -4,9 +4,9 @@ class CityService {
 	constructor() {
 		this.cityRepository = new CityRepository();
 	}
-	async createCity(cityName) {
+	async createCity({name}) {
 		try {
-			return await this.cityRepository.createCity(cityName);
+			return await this.cityRepository.createCity(name);
 		} catch (error) {
 			throw { error };
 		}

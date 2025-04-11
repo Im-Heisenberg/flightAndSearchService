@@ -2,9 +2,9 @@ const { City } = require("../models/");
 const { Op } = require("sequelize");
 const { constants } = require("../utils/constants");
 class CityRepository {
-	async createCity(name) {
+	async createCity(cityName) {
 		try {
-			const city = await City.create({ name });
+			const city = await City.create({ name: cityName });
 			return city;
 		} catch (error) {
 			throw { error };
@@ -32,20 +32,20 @@ class CityRepository {
 			throw { error };
 		}
 	}
-	async findCity(cityId) {
+	async getCity(cityId) {
 		try {
 			return await City.findByPk(cityId);
 		} catch (error) {
 			throw { error };
 		}
 	}
-	async findAllCities(filter) {
+	async getAllCities(filter) {
 		try {
 			if (filter.name) {
 				const relatedCities = await City.findAll({
 					where: {
 						name: {
-							[Op.endsWith]: filter.name,
+							[Op.startsWith]: filter.name,
 						},
 					},
 					limit: constants.citySuggestionLimit,
