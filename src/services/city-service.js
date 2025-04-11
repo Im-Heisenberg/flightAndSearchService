@@ -25,16 +25,16 @@ class CityService {
 			throw { error };
 		}
 	}
-	async findCity(cityId) {
+	async getCity(cityId) {
 		try {
-			return await this.cityRepository.findCity(cityId);
+			return await this.cityRepository.getCity(cityId);
 		} catch (error) {
 			throw { error };
 		}
 	}
-	async findAllCities(filter) {
+	async getAllCities(filter) {
 		try {
-			return await this.cityRepository.findAllCities(filter);
+			return await this.cityRepository.getAllCities(filter);
 		} catch (error) {
 			throw { error };
 		}
